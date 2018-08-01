@@ -8,7 +8,7 @@
 % abstract
 % rotating - sidewaystable - flip
 
-\usepackage{rotating}
+\usepackage{rotating} %para rotar tablas
 \usepackage[utf8]{inputenc}
 \usepackage{longtable}
 
@@ -74,7 +74,7 @@ Una vista gráfica a lo anterior la tenemos a continuación:
 \centering
 <<barplots, echo=FALSE,fig=TRUE>>=
 par(mfrow=c(2,2),mar=c(5,5,3,3)) # top, left, etc...
-top_y=50
+top_y=50 ## tiene mucho techo, le voy a poner una altura maxima
 
 demoTable=table(dataidx$Democracy)
 demoTableRel=round(prop.table(demoTable)*100,1)
@@ -138,7 +138,7 @@ corrDem=cor(dataidx[,2],dataidx[,explanans],
     use = "na.or.complete")
 stargazer(corrDem, 
           title="Correlación de GDP con las demás variables",
-          flip=TRUE)
+          flip=TRUE) # flip lo que hace es transpose la tabla
 @
 
 

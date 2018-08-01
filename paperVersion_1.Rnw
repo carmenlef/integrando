@@ -2,13 +2,13 @@
 
 % spanish-inputenc
 % longtable for reportable
-% echo in chunk
-% results in latex (results=tex)
+% echo in chunk (para que no se vea el codigo)
+% results in latex (results=tex) para que sepa que tienen que generarse en latex
 % par(mfrow=c(filas,columnas))
 % stargazer and report table packages
 
-\usepackage[utf8]{inputenc}
-\usepackage{longtable}
+\usepackage[utf8]{inputenc} % ayuda con los acentos
+\usepackage{longtable} % 
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
@@ -39,12 +39,13 @@ dataidx=read.csv(filename, stringsAsFactors = T)
 Este es el comportamiento de las variables a estudiar. Veamos su tabla de frecuencias:
 
 <<tabFrec, results=tex,echo=FALSE>>=
-library(reporttools)
+library(reporttools) 
 library(xtable)
-
+# tableNominal viene de reporttools que necesita xtable
+# 
 titulo <- "Tablas de Frecuencia de la variables en estudio"
 tableNominal(vars = dataidx[, c(7:10)], 
-             cap = titulo, vertical = FALSE,
+             cap = titulo, vertical = FALSE, 
              caption.placement = "top",
              add.to.row = list(pos = list(0),
                                command = "\\hline"))

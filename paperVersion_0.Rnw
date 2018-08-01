@@ -23,6 +23,10 @@ Exploración Univariada
 
 En esta sección exploro cada índice.
 
+Hago un chunk, todo lo que este fuera se genera como texto
+<<titulo de lo que hace este chunk>>=
+
+@
 
 
 
@@ -71,6 +75,7 @@ ecoTableRel
 
 Y aquí el plot que representa esta distribución
 <<ecoTableRelPlot,fig=TRUE>>=
+### tengo que poner ,fig=TRUE para que el comando me ponga el gráfico
 title='Distribución de la Libertad Económica'
 paleta='red'
 barplot(ecoTableRel,main=title,
