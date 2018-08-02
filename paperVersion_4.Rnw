@@ -2,7 +2,10 @@
 
 %%%%
 % MAS PLOTS EN CORRELACION
-% \usepackage{adjustbox}
+
+\usepackage{adjustbox}  % sirve para modificar el tamaño del grafico
+% trim sirve para achicar el espacio entre el borde exterior del grafico
+% y el grafico mismo.
 %%%%
 \usepackage{rotating}
 \usepackage[utf8]{inputenc}
@@ -185,6 +188,8 @@ Lo visto en la Tabla \ref{corrTableX} se refuerza claramente en la Figura \ref{c
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=7cm,clip,trim=1.5cm 0.5cm 0cm 1.5cm}
+% clip y trim deben ir juntos, trim va en sentido horario, el primero es la
+% abajo bottom, right, top, right: ojo es lo que recorta el trim. 
 <<corrPlotX, echo=FALSE,fig=TRUE>>=
 library(corrplot)
 corrplot(corrTableX_copy, type = "lower", diag = F,

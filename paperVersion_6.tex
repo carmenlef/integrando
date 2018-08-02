@@ -1,7 +1,7 @@
 \documentclass{article}
 
 %%%%
-% babel
+% babel: en vez de Table que aparezca Tabla
 % PLOTS mapas y conglomerados
 % bibliografia
 %%%%
@@ -14,7 +14,7 @@
 \usepackage{natbib}
 
 \usepackage[spanish]{babel}
-%\renewcommand\spanishtablename{Tabla}
+\renewcommand\spanishtablename{Tabla}
 
 
 \title{LOS INDICES DEL MUNDO}
@@ -65,7 +65,7 @@ En esta sección exploro cada índice. En esta sección exploro cada índice. En
 Para conocer el comportamiento de las variables se ha preparado la Tabla \ref{Tfrecuencias}, donde se describe la distribución de las modalidades de cada variable. Los números representan la situación de algun país en ese indicador, donde el mayor valor numérico es la mejor situación.
 
 % latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Wed Aug  1 17:23:47 2018
+% Thu Aug  2 11:37:23 2018
 \begingroup\normalsize
 \begin{longtable}{llrrr}
 \caption{Tablas de Frecuencia de la variables en estudio} \\ 
@@ -128,7 +128,7 @@ Además de la distribución de los variable, es importante saber el valor centra
 
 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Wed, Aug 01, 2018 - 17:23:47
+% Date and time: Thu, Aug 02, 2018 - 11:37:23
 \begin{table}[!htbp] \centering 
   \caption{Estadísticos para variables numéricas} 
   \label{statsnum} 
@@ -142,7 +142,7 @@ gdp & 186 & 21,667.200 & 13,000 & 700 & 139,100 \\
 \end{tabular} 
 \end{table} 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Wed, Aug 01, 2018 - 17:23:47
+% Date and time: Thu, Aug 02, 2018 - 11:37:23
 \begin{table}[!htbp] \centering 
   \caption{Estadísticos para variables ordinales} 
   \label{statsord} 
@@ -164,7 +164,7 @@ DemocracyIndex & 186 & 4 & 5 & 1 \\
 En este trabajo estamos interesados en el impacto de los otros indices en el nivel de Democracia. Veamos las relaciones bivariadas que tiene esta variable con todas las demás:
 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Wed, Aug 01, 2018 - 17:23:47
+% Date and time: Thu, Aug 02, 2018 - 11:37:23
 \begin{table}[!htbp] \centering 
   \caption{Correlación de GDP con las demás variables} 
   \label{corrDem} 
@@ -186,7 +186,7 @@ Veamos la correlación entre las variables independientes:
 \centering
 \caption{Correlación entre variables independientes}
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Wed, Aug 01, 2018 - 17:23:47
+% Date and time: Thu, Aug 02, 2018 - 11:37:23
 \begin{tabular}{@{\extracolsep{5pt}} ccccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
@@ -204,3 +204,87 @@ Lo visto en la Tabla \ref{corrTableX} se refuerza claramente en la Figura \ref{c
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=7cm,clip,trim=1.5cm 0.5cm 0cm 1.5cm}
+\includegraphics{paperVersion_6-corrPlotX}
+\end{adjustbox}
+\caption{correlación entre predictores}
+\label{corrPlotX}
+\end{figure}
+
+
+\clearpage
+
+\section{Modelos de Regresión}
+
+FFinalmente, vemos los modelos propuestos. Primero sin el índice de democracia como independiente, y luego con éste. Los resultados se muestran en la Tabla \ref{regresiones} de la página \pageref{regresiones}.
+
+
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Thu, Aug 02, 2018 - 11:37:23
+\begin{table}[!htbp] \centering 
+  \caption{Modelos de Regresión} 
+  \label{regresiones} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{gdp} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ FreedomintheWorld & $-$2,582.285 & $-$5,505.874$^{**}$ \\ 
+  & (1,579.153) & (2,305.879) \\ 
+  & & \\ 
+ IndexofEconomicFreedom & 14,823.900$^{***}$ & 13,575.000$^{***}$ \\ 
+  & (1,779.269) & (1,910.907) \\ 
+  & & \\ 
+ PressFreedomIndex & 3,569.733 & 3,570.992 \\ 
+  & (2,326.908) & (2,314.236) \\ 
+  & & \\ 
+ DemocracyIndex &  & 4,103.246$^{*}$ \\ 
+  &  & (2,369.556) \\ 
+  & & \\ 
+ Constant & $-$19,594.750$^{***}$ & $-$18,067.700$^{***}$ \\ 
+  & (4,707.167) & (4,763.864) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 186 & 186 \\ 
+R$^{2}$ & 0.355 & 0.366 \\ 
+Adjusted R$^{2}$ & 0.345 & 0.352 \\ 
+Residual Std. Error & 19,424.840 (df = 182) & 19,319.060 (df = 181) \\ 
+F Statistic & 33.455$^{***}$ (df = 3; 182) & 26.117$^{***}$ (df = 4; 181) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
+\clearpage
+
+\section{Exploración Espacial}
+
+Como acabamos de ver en la Tabla \ref{regresiones} en la página \pageref{regresiones}, si quisieras sintetizar la multidimensionalidad de nuestros indicadores, podríamos usar las cuatro variables ordinales que tenemos. 
+
+Así, propongo que calculemos conglomerados de países usando toda la información de esos indicadores. Como estas variables son ordinales, utilizaremos un proceso de conglomeración donde las distancia serán calculadas usando la medida {\bf gower} 
+propuesta por \cite{gower_general_1971}
+, y para los enlazamientos usaremos la técnica de {\bf medoides} 
+siguiendo a \cite{reynolds_clustering_2006}
+. Los tres conglomerados se muestran en la Figura \ref{clustmap}.
+
+
+
+
+
+
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{width=11cm,height=8cm,clip,trim=1cm 2.5cm 0cm 2.5cm}
+\includegraphics{paperVersion_6-plotMap1}
+\end{adjustbox}
+\caption{Paises conglomerados segun sus indicadores sociopolíticos}\label{clustmap}
+\end{figure}
+
+ \bibliographystyle{apalike}
+\renewcommand{\refname}{Bibliografia}
+\bibliography{reprobib}
+
+\end{document}
